@@ -660,7 +660,7 @@ type LocationPhoto struct {
 	ClickThroughUrl string `json:"clickthroughUrl,omitempty"`
 }
 
-func (l Photo) String() string {
+func (l LocationPhoto) String() string {
 	return fmt.Sprintf("Url: '%v', Description: '%v'", l.Url, l.Description)
 }
 
