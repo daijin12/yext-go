@@ -24,56 +24,49 @@ type LocationEntity struct {
 	Keywords    *[]string `json:"keywords,omitempty"`
 
 	// Address Fields
-	Name            *string  `json:"name,omitempty"`
-	Address         *Address `json:"address,omitempty"`
-	SuppressAddress *bool    `json:"suppressAddress,omitempty"`
+	Name          *string  `json:"name,omitempty"`
+	Address       *Address `json:"address,omitempty"`
+	AddressHidden *bool    `json:"addressHidden,omitempty"`
+	ISORegionCode *string  `json:"isoRegionCode,omitempty"`
 
 	// Other Contact Info
-	AlternatePhone *string   `json:"alternatePhone,omitempty"`
-	Fax            *string   `json:"fax,omitempty"`
-	LocalPhone     *string   `json:"localPhone,omitempty"`
-	MobilePhone    *string   `json:"mobilePhone,omitempty"`
-	MainPhone      *string   `json:"mainPhone,omitempty"`
-	TollFreePhone  *string   `json:"tollFreePhone,omitempty"`
-	TtyPhone       *string   `json:"ttyPhone,omitempty"`
-	IsPhoneTracked *bool     `json:"isPhoneTracked,omitempty"`
-	Emails         *[]string `json:"emails,omitempty"`
+	AlternatePhone *string `json:"alternatePhone,omitempty"`
+	Fax            *string `json:"fax,omitempty"`
+	LocalPhone     *string `json:"localPhone,omitempty"`
+	MobilePhone    *string `json:"mobilePhone,omitempty"`
+	MainPhone      *string `json:"mainPhone,omitempty"`
+	TollFreePhone  *string `json:"tollFreePhone,omitempty"`
+	TtyPhone       *string `json:"ttyPhone,omitempty"`
+	//IsPhoneTracked *bool     `json:"isPhoneTracked,omitempty"`
+	Emails *[]string `json:"emails,omitempty"`
 
 	// Location Info
-	Description         *string        `json:"description,omitempty"`
-	Hours               *Hours         `json:"hours,omitempty"`
-	AdditionalHoursText *string        `json:"additionalHoursText,omitempty"`
-	YearEstablished     *float64       `json:"yearEstablished,omitempty"`
-	Associations        *[]string      `json:"associations,omitempty"`
-	Certifications      *[]string      `json:"certifications,omitempty"`
-	Brands              *[]string      `json:"brands,omitempty"`
-	Products            *[]string      `json:"products,omitempty"`
-	Services            *[]string      `json:"services,omitempty"`
-	Specialties         *[]string      `json:"specialties,omitempty"`
-	Languages           *[]string      `json:"languages,omitempty"`
-	Logo                *LocationPhoto `json:"logo,omitempty"`
-	PaymentOptions      *[]string      `json:"paymentOptions,omitempty"`
+	Description         *string   `json:"description,omitempty"`
+	Hours               *Hours    `json:"hours,omitempty"`
+	AdditionalHoursText *string   `json:"additionalHoursText,omitempty"`
+	YearEstablished     *float64  `json:"yearEstablished,omitempty"`
+	Associations        *[]string `json:"associations,omitempty"`
+	Certifications      *[]string `json:"certifications,omitempty"`
+	Brands              *[]string `json:"brands,omitempty"`
+	Products            *[]string `json:"products,omitempty"`
+	Services            *[]string `json:"services,omitempty"`
+	Specialties         *[]string `json:"specialties,omitempty"`
+	Languages           *[]string `json:"languages,omitempty"`
+	Logo                *Image    `json:"logo,omitempty"`
+	PaymentOptions      *[]string `json:"paymentOptions,omitempty"`
 
 	// Lats & Lngs
-	DisplayCoordinate *Coordinate `json:"yextDisplayCoordinate,omitempty"`
-	// TODO: Update below
-	DropoffLat         *float64    `json:"dropoffLat,omitempty"`
-	DropoffLng         *float64    `json:"dropoffLng,omitempty"`
-	WalkableLat        *float64    `json:"walkableLat,omitempty"`
-	WalkableLng        *float64    `json:"walkableLng,omitempty"`
-	RoutableCoordinate *Coordinate `json:"yextRoutableCoordinate,omitempty"`
-	PickupLat          *float64    `json:"pickupLat,omitempty"`
-	PickupLng          *float64    `json:"pickupLng,omitempty"`
+	DisplayCoordinate  *Coordinate `json:"displayCoordinate,omitempty"`
+	DropoffCoordinate  *Coordinate `json:"dropoffCoordinate,omitempty"`
+	WalkableCoordinate *Coordinate `json:"walkableCoordinate,omitempty"`
+	RoutableCoordinate *Coordinate `json:"routableCoordinate,omitempty"`
+	PickupCoordinate   *Coordinate `json:"pickupCoordinate,omitempty"`
 
-	// ECLS
-	BioListIds        *[]string `json:"bioListIds,omitempty"`
-	BioListsLabel     *string   `json:"bioListsLabel,omitempty"`
-	EventListIds      *[]string `json:"eventListIds,omitempty"`
-	EventListsLabel   *string   `json:"eventListsLabel,omitempty"`
-	MenuListsLabel    *string   `json:"menusLabel,omitempty"`
-	MenuListIds       *[]string `json:"menuIds,omitempty"`
-	ProductListIds    *[]string `json:"productListIds,omitempty"`
-	ProductListsLabel *string   `json:"productListsLabel,omitempty"`
+	// Lists
+	Bios         *Lists `json:"bios,omitempty"`
+	Calendars    *Lists `json:"calendars,omitempty"`
+	Menus        *Lists `json:"menus,omitempty"`
+	ProductLists *Lists `json:"productLists,omitempty"`
 
 	// Urls
 	MenuUrl         *Website         `json:"menuUrl,omitempty"`
@@ -83,37 +76,56 @@ type LocationEntity struct {
 	FeaturedMessage *FeaturedMessage `json:"featuredMessage,omitempty"`
 
 	// Uber
-	UberClientId         *string `json:"uberClientId,omitempty"`
-	UberLinkText         *string `json:"uberLinkText,omitempty"`
-	UberLinkType         *string `json:"uberLinkType,omitempty"`
-	UberTripBrandingText *string `json:"uberTripBrandingText,omitempty"`
-	UberTripBrandingUrl  *string `json:"uberTripBrandingUrl,omitempty"`
+	//UberClientId         *string `json:"uberClientId,omitempty"`
+	UberLink         *UberLink         `json:"uberLink,omitempty"`
+	UberTripBranding *UberTripBranding `json:"uberTripBranding,omitempty"`
 
 	// Social Media
-	FacebookCoverPhoto     *LocationPhoto `json:"facebookCoverPhoto,omitempty"`
-	FacebookPageUrl        *string        `json:"facebookPageUrl,omitempty"`
-	FacebookProfilePicture *LocationPhoto `json:"facebookProfilePicture,omitempty"`
+	FacebookCoverPhoto    *Image  `json:"facebookCoverPhoto,omitempty"`
+	FacebookPageUrl       *string `json:"facebookPageUrl,omitempty"`
+	FacebookProfilePhoto  *Image  `json:"facebookProfilePhoto,omitempty"`
+	GoogleCoverPhoto      *Image  `json:"googleCoverPhoto,omitempty"`
+	GooglePreferredPhoto  *string `json:"googlePreferredPhoto,omitempty"`
+	GoogleProfilePhoto    *Image  `json:"googleProfilePhoto,omitempty"`
+	GoogleWebsiteOverride *string `json:"googleWebsiteOverride,omitempty"`
+	InstagramHandle       *string `json:"instagramHandle,omitempty"`
+	TwitterHandle         *string `json:"twitterHandle,omitempty"`
 
-	GoogleCoverPhoto      *LocationPhoto `json:"googleCoverPhoto,omitempty"`
-	GooglePreferredPhoto  *string        `json:"googlePreferredPhoto,omitempty"`
-	GoogleProfilePhoto    *LocationPhoto `json:"googleProfilePhoto,omitempty"`
-	GoogleWebsiteOverride *string        `json:"googleWebsiteOverride,omitempty"`
-
-	InstagramHandle *string `json:"instagramHandle,omitempty"`
-	TwitterHandle   *string `json:"twitterHandle,omitempty"`
-
-	Photos    *[]LocationPhoto `json:"photos,omitempty"`
-	VideoUrls *[]string        `json:"videoUrls,omitempty"`
+	PhotoGallery *[]Photo `json:"photoGallery,omitempty"`
+	Videos       *[]Video `json:"videos,omitempty"`
 
 	GoogleAttributes *GoogleAttributes `json:"googleAttributes,omitempty"`
 
 	// Reviews
-	ReviewBalancingURL   *string `json:"reviewBalancingURL,omitempty"`
+	//ReviewBalancingURL   *string `json:"reviewBalancingURL,omitempty"`
 	FirstPartyReviewPage *string `json:"firstPartyReviewPage,omitempty"`
 }
 
-// TODO: Rename LocationPhoto....profilePhoto?
-// Or below could be complex photo vs simple photo
+type Video struct {
+	VideoUrl    VideoUrl `json:"video,omitempty"`
+	Description string   `json:"description,omitempty"`
+}
+
+type VideoUrl struct {
+	Url string `json:"url,omitempty"`
+}
+
+type UberLink struct {
+	Text         *string `json:"text,omitempty"`
+	Presentation *string `json:"presentation,omitempty"`
+}
+
+type UberTripBranding struct {
+	Text        *string `json:"text,omitempty"`
+	Url         *string `json:"url,omitempty"`
+	Description *string `json:"description,omitempty"`
+}
+
+type Lists struct {
+	Label *string   `json:"label,omitempty"`
+	Ids   *[]string `json:"ids,omitempty"`
+}
+
 type Photo struct {
 	Image           *Image  `json:"image,omitempty"`
 	ClickthroughUrl *string `json:"clickthroughUrl,omitempty"`
@@ -164,7 +176,7 @@ type Hours struct {
 }
 
 type DayHours struct {
-	OpenIntervals []*Interval `json:"openIntervals,omitempty"`
+	OpenIntervals *[]Interval `json:"openIntervals,omitempty"`
 	IsClosed      *bool       `json:"isClosed,omitempty"`
 }
 
@@ -174,20 +186,22 @@ func (d *DayHours) SetClosed() {
 }
 
 func (d *DayHours) AddHours(start string, end string) {
+	intervals := []Interval{}
 	d.IsClosed = nil
-	if d.OpenIntervals == nil {
-		d.OpenIntervals = []*Interval{}
+	if d.OpenIntervals != nil {
+		intervals = *d.OpenIntervals
 	}
-	d.OpenIntervals = append(d.OpenIntervals, &Interval{
+	intervals = append(intervals, Interval{
 		Start: start,
 		End:   end,
 	})
+	d.OpenIntervals = &intervals
 }
 
 func (d *DayHours) SetHours(start string, end string) {
 	d.IsClosed = nil
-	d.OpenIntervals = []*Interval{
-		&Interval{
+	d.OpenIntervals = &[]Interval{
+		Interval{
 			Start: start,
 			End:   end,
 		},
@@ -362,9 +376,9 @@ func (y LocationEntity) GetLine2() string {
 	return ""
 }
 
-func (y LocationEntity) GetSuppressAddress() bool {
-	if y.SuppressAddress != nil {
-		return *y.SuppressAddress
+func (y LocationEntity) GetAddressHidden() bool {
+	if y.AddressHidden != nil {
+		return *y.AddressHidden
 	}
 	return false
 }
@@ -402,13 +416,6 @@ func (y LocationEntity) GetMainPhone() string {
 		return *y.MainPhone
 	}
 	return ""
-}
-
-func (y LocationEntity) GetIsPhoneTracked() bool {
-	if y.IsPhoneTracked != nil {
-		return *y.IsPhoneTracked
-	}
-	return false
 }
 
 func (y LocationEntity) GetLocalPhone() string {
@@ -551,40 +558,40 @@ func (y LocationEntity) GetRoutableLng() float64 {
 	return 0
 }
 
-func (y LocationEntity) GetBioListIds() (v []string) {
-	if y.BioListIds != nil {
-		v = *y.BioListIds
+func (y LocationEntity) GetBios() (v Lists) {
+	if y.Bios != nil {
+		v = *y.Bios
 	}
 	return v
 }
 
-func (y LocationEntity) GetEventListIds() (v []string) {
-	if y.EventListIds != nil {
-		v = *y.EventListIds
+func (y LocationEntity) GetCalendars() (v Lists) {
+	if y.Calendars != nil {
+		v = *y.Calendars
 	}
 	return v
 }
 
-func (y LocationEntity) GetProductListIds() (v []string) {
-	if y.ProductListIds != nil {
-		v = *y.ProductListIds
+func (y LocationEntity) GetProductLists() (v Lists) {
+	if y.ProductLists != nil {
+		v = *y.ProductLists
 	}
 	return v
 }
 
-func (y LocationEntity) GetMenuListIds() (v []string) {
-	if y.MenuListIds != nil {
-		v = *y.MenuListIds
+func (y LocationEntity) GetMenus() (v Lists) {
+	if y.Menus != nil {
+		v = *y.Menus
 	}
 	return v
 }
 
-func (y LocationEntity) GetReviewBalancingURL() string {
-	if y.ReviewBalancingURL != nil {
-		return *y.ReviewBalancingURL
-	}
-	return ""
-}
+// func (y LocationEntity) GetReviewBalancingURL() string {
+// 	if y.ReviewBalancingURL != nil {
+// 		return *y.ReviewBalancingURL
+// 	}
+// 	return ""
+// }
 
 func (y LocationEntity) GetFirstPartyReviewPage() string {
 	if y.FirstPartyReviewPage != nil {
@@ -661,9 +668,9 @@ func (y LocationEntity) GetPaymentOptions() (v []string) {
 	return v
 }
 
-func (y LocationEntity) GetVideoUrls() (v []string) {
-	if y.VideoUrls != nil {
-		v = *y.VideoUrls
+func (y LocationEntity) GetVideos() (v []Video) {
+	if y.Videos != nil {
+		v = *y.Videos
 	}
 	return v
 }
@@ -692,6 +699,8 @@ func (y LocationEntity) IsClosed() bool {
 // HolidayHours represents individual exceptions to a Location's regular hours in Yext Location Manager.
 // For details see
 type HolidayHours struct {
-	Date  string      `json:"date"`
-	Hours []*Interval `json:"hours"`
+	Date           string      `json:"date"`
+	OpenIntervals  *[]Interval `json:"openIntervals,omitempty"`
+	IsClosed       *bool       `json:"isClosed,omitempty"`
+	IsRegularHours *bool       `json:"isRegularHours,omitempty"`
 }
