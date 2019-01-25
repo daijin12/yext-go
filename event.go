@@ -14,7 +14,7 @@ type EventEntity struct {
 	EntityType  EntityType `json:"entityType,omitempty"`
 }
 
-func (e *EventEntity) String() string {
+func (e *EventEntity)SingleString() string {
 	b, _ := json.Marshal(e)
 	return string(b)
 }
