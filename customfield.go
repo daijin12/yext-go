@@ -26,6 +26,7 @@ type CustomField struct {
 	Group                      string              `json:"group"`
 	Description                string              `json:"description"`
 	AlternateLanguageBehaviour string              `json:"alternateLanguageBehavior"`
+	EntityAvailability         []EntityType        `json:"entityAvailability,omitempty"`
 }
 
 func (c CustomField) GetId() string {
